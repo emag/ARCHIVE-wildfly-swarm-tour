@@ -6,10 +6,6 @@
   <groupId>com.example</groupId>
   <artifactId>wildfly-swarm-tour-parent</artifactId>
   <version>1.0.0</version>
-  <modules>
-    <module>hello-wildfly-swarm</module>
-    <module>lifelog</module>
-  </modules>
 
   <packaging>pom</packaging>
 
@@ -45,5 +41,11 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <modules>
+    <module>hello-wildfly-swarm</module>
+    <module>lifelog</module>
+    <module>lifelog-arquillian</module>
+  </modules>
 
 </project>
