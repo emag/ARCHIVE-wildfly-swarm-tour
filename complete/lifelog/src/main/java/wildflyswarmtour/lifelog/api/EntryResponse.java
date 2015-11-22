@@ -13,6 +13,12 @@ public class EntryResponse {
   private final String timestamp;
   private final String description;
 
+  private EntryResponse(Integer id, String timestamp, String description) {
+    this.id = id;
+    this.timestamp = timestamp;
+    this.description = description;
+  }
+
   public static EntryResponse from(Entry entry) {
     return new EntryResponse(entry.getId(), entry.getTimestamp().toString(), entry.getDescription());
   }
