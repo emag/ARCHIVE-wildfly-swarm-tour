@@ -18,7 +18,11 @@
     <version.wildfly-swarm>1.0.0.Alpha6-SNAPSHOT</version.wildfly-swarm>
 
     <version.lombok>1.16.6</version.lombok>
+    <version.org.arquillian>1.1.8.Final</version.org.arquillian>
+    <version.resteasy>3.0.13.Final</version.resteasy>
+
     <version.maven-war-plugin>2.6</version.maven-war-plugin>
+    <version.maven-failsafe-plugin>2.19</version.maven-failsafe-plugin>
   </properties>
 
   <build>
