@@ -53,6 +53,7 @@
     <module>lifelog</module>
     <module>lifelog-arquillian</module>
     <module>lifelog-postgresql</module>
+    <module>lifelog-keycloak</module>
   </modules>
 
 </project>
