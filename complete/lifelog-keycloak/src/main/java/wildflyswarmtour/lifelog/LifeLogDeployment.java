@@ -18,10 +18,12 @@ public class LifeLogDeployment {
     deployment.addAsWebInfResource(
       new ClassLoaderAsset("META-INF/persistence.xml", App.class.getClassLoader()), "classes/META-INF/persistence.xml");
 
-    Secured secured = deployment.as(Secured.class);
-    secured.protect("/entries/*").withMethod("POST").withRole("author");
-    secured.protect("/entries/*").withMethod("PUT").withRole("author");
-    secured.protect("/entries/*").withMethod("DELETE").withRole("author");
+    deployment.as(Secured.class)
+      .protect("/entries/*")
+        .withMethod("POST")
+        .withMethod("PUT")
+        .withMethod("DELETE")
+        .withRole("author");
 
     return deployment;
   }
