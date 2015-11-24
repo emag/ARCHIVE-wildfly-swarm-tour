@@ -24,6 +24,11 @@
       <artifactId>wildfly-swarm-jpa</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-keycloak</artifactId>
+      <version>${version.wildfly-swarm}</version>
+    </dependency>
 
     <dependency>
       <groupId>org.projectlombok</groupId>

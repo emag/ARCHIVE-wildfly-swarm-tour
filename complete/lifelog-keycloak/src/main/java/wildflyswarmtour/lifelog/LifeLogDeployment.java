@@ -3,6 +3,7 @@ package wildflyswarmtour.lifelog;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
+import org.wildfly.swarm.keycloak.Secured;
 
 /**
  * @author Yoshimasa Tanabe
@@ -16,6 +17,11 @@ public class LifeLogDeployment {
 
     deployment.addAsWebInfResource(
       new ClassLoaderAsset("META-INF/persistence.xml", App.class.getClassLoader()), "classes/META-INF/persistence.xml");
+
+    Secured secured = deployment.as(Secured.class);
+    secured.protect("/entries/*").withMethod("POST").withRole("author");
+    secured.protect("/entries/*").withMethod("PUT").withRole("author");
+    secured.protect("/entries/*").withMethod("DELETE").withRole("author");
 
     return deployment;
   }
