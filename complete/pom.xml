@@ -25,6 +25,7 @@
 
     <version.maven-war-plugin>2.6</version.maven-war-plugin>
     <version.maven-failsafe-plugin>2.19</version.maven-failsafe-plugin>
+    <version.docker-maven-plugin>0.13.6</version.docker-maven-plugin>
   </properties>
 
   <build>
@@ -54,6 +55,7 @@
     <module>lifelog-arquillian</module>
     <module>lifelog-postgresql</module>
     <module>lifelog-keycloak</module>
+    <module>lifelog-docker</module>
   </modules>
 
 </project>
