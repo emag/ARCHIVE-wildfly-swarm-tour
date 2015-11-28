@@ -99,6 +99,7 @@
           <images>
             <image>
             <name>emag/lifelog</name>
+            <alias>lifelog</alias>
             <build>
               <from>jboss/base-jdk:8</from>
               <maintainer>emag</maintainer>
@@ -132,6 +133,12 @@
                 </inline>
               </assembly>
             </build>
+            <run>
+              <namingStrategy>alias</namingStrategy>
+              <ports>
+                <port>8080:8080</port>
+              </ports>
+            </run>
             </image>
           </images>
         </configuration>
