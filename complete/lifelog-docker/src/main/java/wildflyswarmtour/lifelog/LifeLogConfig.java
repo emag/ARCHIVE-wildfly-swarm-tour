@@ -13,8 +13,8 @@ class LifeLogConfig {
     if (System.getenv("ENVIRONMENT_PRODUCTION") != null) {
       isProduction = Boolean.parseBoolean(System.getenv("ENVIRONMENT_PRODUCTION"));
     }
-    if (System.getProperty("wildflyswarmtour.lifelog.production") != null) {
-      isProduction = Boolean.parseBoolean(System.getProperty("wildflyswarmtour.lifelog.production"));
+    if (System.getProperty("lifelog.production") != null) {
+      isProduction = Boolean.parseBoolean(System.getProperty("lifelog.production"));
     }
 
     return isProduction;
@@ -26,8 +26,8 @@ class LifeLogConfig {
     if (System.getenv("DB_PORT_5432_TCP_ADDR") != null) {
       dbHost = System.getenv("DB_PORT_5432_TCP_ADDR");
     }
-    if (System.getProperty("wildflyswarmtour.lifelog.db.host") != null) {
-      dbHost = System.getProperty("wildflyswarmtour.lifelog.db.host");
+    if (System.getProperty("lifelog.db.host") != null) {
+      dbHost = System.getProperty("lifelog.db.host");
     }
 
     return dbHost;
@@ -39,8 +39,8 @@ class LifeLogConfig {
     if (System.getenv("DB_PORT_5432_TCP_PORT") != null) {
       dbPort = Integer.parseInt(System.getenv("DB_PORT_5432_TCP_PORT"));
     }
-    if (System.getProperty("wildflyswarmtour.lifelog.db.port") != null) {
-      dbPort = Integer.parseInt(System.getProperty("wildflyswarmtour.lifelog.db.port"));
+    if (System.getProperty("lifelog.db.port") != null) {
+      dbPort = Integer.parseInt(System.getProperty("lifelog.db.port"));
     }
 
     return dbPort;
