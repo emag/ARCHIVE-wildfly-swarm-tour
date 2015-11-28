@@ -2,7 +2,7 @@
   "realm": "lifelog",
   "realm-public-key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr3dD6m/4HMNVTnRfQ67L7rdVSnnfKKycWxQ1fBvpVdiBGsPl+vdNyEeMfeghNS0M3RcsAmfMBOEAboWQzF5BBDVPcsl4M4Djcna+AdKDMh4ZJ32ZS+1pkt8kIvX5l+BNWbwRakwa1A9Lu/Esrp59rN8/lE+M7h6zjNAek17xaUltAlHOVE+8M9Ty0q+vBCYFjHYJMUs2gy5eZIUFjzUtflxiC9nXMyBHssuSOfO0Qr4oFWg0Kn1WDB6S/k0d76i5InB2GdZJ13WUD5hTodshIzCjwiajRf2Gu56VE1zGRGOTPsWoWiABROhkfxiRirRg+vdTpdAiW7qVR9e7V2yrKQIDAQAB",
   "bearer-only": true,
-  "auth-server-url": "http://localhost:8180/auth",
+  "auth-server-url": "http://${lifelog.keycloak.host}:${lifelog.keycloak.port}/auth",
   "ssl-required": "external",
   "resource": "service"
 }
