@@ -12,9 +12,7 @@ public class LifeLogContainer {
   public static Container newContainer() throws Exception {
     Container container = new Container();
 
-    boolean production = Boolean.parseBoolean(System.getProperty("wildflyswarmtour.lifelog.production"));
-
-    if (production) {
+    if (LifeLogConfig.isProduction()) {
       container.fraction(new DatasourcesFraction()
         .jdbcDriver("org.postgresql", (d) -> {
           d.driverDatasourceClassName("org.postgresql.Driver");
@@ -23,7 +21,7 @@ public class LifeLogContainer {
         })
         .dataSource("lifelogDS", (ds) -> {
           ds.driverName("org.postgresql");
-          ds.connectionUrl("jdbc:postgresql://localhost:5432/lifelog");
+          ds.connectionUrl(String.format("jdbc:postgresql://%s:%d/lifelog", LifeLogConfig.dbHost(), LifeLogConfig.dbPort()));
           ds.userName("lifelog");
           ds.password("lifelog");
         })
