@@ -2,6 +2,7 @@ package wildflyswarmtour.lifelog;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
+import org.jboss.shrinkwrap.api.asset.StringAsset;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.keycloak.Secured;
 
@@ -17,6 +18,9 @@ public class LifeLogDeployment {
 
     deployment.addAsWebInfResource(
       new ClassLoaderAsset("META-INF/persistence.xml", App.class.getClassLoader()), "classes/META-INF/persistence.xml");
+
+    deployment.addAsWebInfResource(
+      new StringAsset(LifeLogConfig.kyeCloakJsonFromTemplate()), "keycloak.json");
 
     deployment.as(Secured.class)
       .protect("/entries/*")
