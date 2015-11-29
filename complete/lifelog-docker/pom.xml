@@ -135,6 +135,13 @@
             </build>
             <run>
               <namingStrategy>alias</namingStrategy>
+              <env>
+                <_JAVA_OPTIONS>-Dlifelog.keycloak.host=localhost -Dlifelog.keycloak.port=8180</_JAVA_OPTIONS>
+                <ENVIRONMENT_PRODUCTION>${lifelog.production}</ENVIRONMENT_PRODUCTION>
+              </env>
+              <links>
+                <link>lifelog-db:db</link>
+              </links>
               <ports>
                 <port>8080:8080</port>
               </ports>
