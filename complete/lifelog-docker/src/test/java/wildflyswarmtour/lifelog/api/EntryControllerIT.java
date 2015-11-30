@@ -17,6 +17,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Form;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -48,16 +49,45 @@ public class EntryControllerIT implements ContainerFactory {
   }
 
   @Test
-  public void test() {
+  public void invalid_token_should_be_forbidden() throws Exception {
     UriBuilder baseUri = UriBuilder.fromUri(deploymentUri).path("entries");
 
-    // Create a new entry
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(baseUri);
 
     Entry entry = new Entry();
     entry.setDescription("Test");
     Response response = target.request().post(Entity.json(entry));
+
+    assertThat(response.getStatus(), is(Response.Status.UNAUTHORIZED.getStatusCode()));
+  }
+
+  @Test
+  public void testWithLogin() {
+    // Login
+    String keycloakUrl = "http://localhost:8180/auth/realms/lifelog/protocol/openid-connect/token";
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(keycloakUrl);
+
+    Form form = new Form();
+    form.param("grant_type", "password");
+    form.param("client_id", "curl");
+    form.param("username", "user1");
+    form.param("password", "password1");
+
+    Token token = target.request(MediaType.APPLICATION_JSON).post(Entity.form(form), Token.class);
+
+    UriBuilder baseUri = UriBuilder.fromUri(deploymentUri).path("entries");
+
+    // Create a new entry
+    client = ClientBuilder.newClient();
+    target = client.target(baseUri);
+
+    Entry entry = new Entry();
+    entry.setDescription("Test");
+    Response response = target.request()
+      .header("Authorization", "bearer " + token.getAccessToken())
+      .post(Entity.json(entry));
 
     assertThat(response.getStatus(), is(Response.Status.CREATED.getStatusCode()));
 
@@ -78,7 +108,9 @@ public class EntryControllerIT implements ContainerFactory {
     // Delete the entry
     client = ClientBuilder.newClient();
     target = client.target(newEntryLocation);
-    response = target.request().delete();
+    response = target.request()
+      .header("Authorization", "bearer " + token.getAccessToken())
+      .delete();
 
     assertThat(response.getStatus(), is(Response.Status.NO_CONTENT.getStatusCode()));
 
