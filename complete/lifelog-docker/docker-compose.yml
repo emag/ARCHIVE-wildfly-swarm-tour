@@ -19,7 +19,7 @@ lifelog-db:
 keycloak:
   image: jboss/keycloak:1.6.1.Final
   volumes:
-    - /home/tanabe/workspace/wildfly-swarm-tour/complete/lifelog-docker:/tmp/lifelog:ro
+    - /path/to/wildfly-swarm-tour/complete/lifelog-docker:/tmp/lifelog:ro
   ports:
     - 8180:8080
   command: /opt/jboss/keycloak/bin/standalone.sh -b 0.0.0.0 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/tmp/lifelog/lifelog.json
