@@ -20,9 +20,7 @@ public class LifeLogDeployment {
 
     deployment.as(Secured.class)
       .protect("/entries/*")
-        .withMethod("POST")
-        .withMethod("PUT")
-        .withMethod("DELETE")
+        .withMethod("POST", "PUT", "DELETE")
         .withRole("author");
 
     return deployment;
