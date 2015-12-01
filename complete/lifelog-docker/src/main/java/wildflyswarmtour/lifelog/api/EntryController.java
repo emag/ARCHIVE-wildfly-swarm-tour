@@ -32,9 +32,6 @@ public class EntryController {
   @Produces(MediaType.APPLICATION_JSON)
   public List<EntryResponse> findALL() {
     List<Entry> allEntries = entryService.findAll();
-    allEntries.forEach(entry -> {
-      System.out.println(entry);
-    });
     return allEntries.stream()
       .map(EntryResponse::from)
       .collect(Collectors.toList());
