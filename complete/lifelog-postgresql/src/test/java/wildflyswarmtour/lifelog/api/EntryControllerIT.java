@@ -2,18 +2,14 @@ package wildflyswarmtour.lifelog.api;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.arquillian.test.api.ArquillianResource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.swarm.ContainerFactory;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
-import org.wildfly.swarm.jpa.JPAFraction;
 import wildflyswarmtour.lifelog.LifeLogContainer;
 import wildflyswarmtour.lifelog.LifeLogDeployment;
 import wildflyswarmtour.lifelog.domain.model.Entry;
-import wildflyswarmtour.lifelog.domain.model.converter.LocalDateTimeConverter;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -22,7 +18,6 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,6 +34,7 @@ public class EntryControllerIT implements ContainerFactory {
   @Deployment(testable = false)
   public static JAXRSArchive createDeployment() {
     System.err.println("now:" + LocalDateTime.now());
+    System.err.println("createDeployment.ENVIRONMENT_PRODUCTION: " + System.getenv("ENVIRONMENT_PRODUCTION"));
     System.err.println("createDeployment.production: " + System.getProperty("lifelog.production"));
     return LifeLogDeployment.deployment();
   }
@@ -46,6 +42,7 @@ public class EntryControllerIT implements ContainerFactory {
   @Override
   public Container newContainer(String... args) throws Exception {
     System.err.println("now:" + LocalDateTime.now());
+    System.err.println("newContainer.ENVIRONMENT_PRODUCTION: " + System.getenv("ENVIRONMENT_PRODUCTION"));
     System.err.println("newContainer.production: " + System.getProperty("lifelog.production"));
     return LifeLogContainer.newContainer();
   }
