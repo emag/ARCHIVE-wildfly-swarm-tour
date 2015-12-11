@@ -35,7 +35,7 @@ public class EntryControllerIT implements ContainerFactory {
   public static JAXRSArchive createDeployment() {
     System.err.println("now:" + LocalDateTime.now());
     System.err.println("createDeployment.ENVIRONMENT_PRODUCTION: " + System.getenv("ENVIRONMENT_PRODUCTION"));
-    System.err.println("createDeployment.production: " + System.getProperty("lifelog.production"));
+    System.err.println("createDeployment.production: " + System.getProperty("swarm.lifelog.production"));
     return LifeLogDeployment.deployment();
   }
 
@@ -43,7 +43,7 @@ public class EntryControllerIT implements ContainerFactory {
   public Container newContainer(String... args) throws Exception {
     System.err.println("now:" + LocalDateTime.now());
     System.err.println("newContainer.ENVIRONMENT_PRODUCTION: " + System.getenv("ENVIRONMENT_PRODUCTION"));
-    System.err.println("newContainer.production: " + System.getProperty("lifelog.production"));
+    System.err.println("newContainer.production: " + System.getProperty("swarm.lifelog.production"));
     return LifeLogContainer.newContainer();
   }
 

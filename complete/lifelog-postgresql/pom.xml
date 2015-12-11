@@ -85,6 +85,11 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <systemPropertyVariables>
+            <swarm.lifelog.production>${swarm.lifelog.production}</swarm.lifelog.production>
+          </systemPropertyVariables>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.wildfly.swarm</groupId>

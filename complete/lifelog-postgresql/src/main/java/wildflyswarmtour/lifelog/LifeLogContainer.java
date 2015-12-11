@@ -12,7 +12,7 @@ public class LifeLogContainer {
   public static Container newContainer() throws Exception {
     Container container = new Container();
 
-    boolean production = Boolean.parseBoolean(System.getProperty("lifelog.production"));
+    boolean production = Boolean.parseBoolean(System.getProperty("swarm.lifelog.production"));
 
     if (production) {
       container.fraction(new DatasourcesFraction()
