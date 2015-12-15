@@ -10,6 +10,7 @@ import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jpa.JPAFraction;
+import wildflyswarmtour.lifelog.LifeLogContainer;
 import wildflyswarmtour.lifelog.LifeLogDeployment;
 import wildflyswarmtour.lifelog.domain.model.Entry;
 
@@ -39,19 +40,15 @@ public class EntryControllerIT implements ContainerFactory {
     return LifeLogDeployment.deployment();
   }
 
-  @ArquillianResource
-  private URI deploymentUri;
-
   @Override
   public Container newContainer(String... args) throws Exception {
-    return newContainer();
-//    return LifeLogContainer.newContainer();
+    return LifeLogContainer.newContainer();
   }
+
+  private static String baseUri = "http://localhost:8080/entries";
 
   @Test
   public void invalid_token_should_be_forbidden() throws Exception {
-    UriBuilder baseUri = UriBuilder.fromUri(deploymentUri).path("entries");
-
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(baseUri);
 
@@ -76,8 +73,6 @@ public class EntryControllerIT implements ContainerFactory {
     form.param("password", "password1");
 
     Token token = target.request(MediaType.APPLICATION_JSON).post(Entity.form(form), Token.class);
-
-    UriBuilder baseUri = UriBuilder.fromUri(deploymentUri).path("entries");
 
     // Create a new entry
     client = ClientBuilder.newClient();
@@ -127,31 +122,6 @@ public class EntryControllerIT implements ContainerFactory {
     assertThat(entries.size(), is(0));
 
     client.close();
-  }
-
-  private Container newContainer() throws Exception {
-    Container container = new Container();
-
-    container.fraction(new DatasourcesFraction()
-      .jdbcDriver("h2", (d) -> {
-        d.driverDatasourceClassName("org.h2.Driver");
-        d.xaDatasourceClass("org.h2.jdbcx.JdbcDataSource");
-        d.driverModuleName("com.h2database.h2");
-      })
-      .dataSource("lifelogDS", (ds) -> {
-        ds.driverName("h2");
-        ds.connectionUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
-        ds.userName("sa");
-        ds.password("sa");
-      })
-    );
-
-    container.fraction(new JPAFraction()
-      .inhibitDefaultDatasource()
-      .defaultDatasource("jboss/datasources/lifelogDS")
-    );
-
-    return container;
   }
 
 }

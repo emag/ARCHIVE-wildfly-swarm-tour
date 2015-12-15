@@ -20,8 +20,8 @@ class LifeLogConfig {
     if (System.getenv("ENVIRONMENT_PRODUCTION") != null) {
       isProduction = Boolean.parseBoolean(System.getenv("ENVIRONMENT_PRODUCTION"));
     }
-    if (System.getProperty("lifelog.production") != null) {
-      isProduction = Boolean.parseBoolean(System.getProperty("lifelog.production"));
+    if (System.getProperty("swarm.lifelog.production") != null) {
+      isProduction = Boolean.parseBoolean(System.getProperty("swarm.lifelog.production"));
     }
 
     return isProduction;
@@ -33,8 +33,8 @@ class LifeLogConfig {
     if (System.getenv("DB_PORT_5432_TCP_ADDR") != null) {
       dbHost = System.getenv("DB_PORT_5432_TCP_ADDR");
     }
-    if (System.getProperty("lifelog.db.host") != null) {
-      dbHost = System.getProperty("lifelog.db.host");
+    if (System.getProperty("swarm.lifelog.db.host") != null) {
+      dbHost = System.getProperty("swarm.lifelog.db.host");
     }
 
     return dbHost;
@@ -46,8 +46,8 @@ class LifeLogConfig {
     if (System.getenv("DB_PORT_5432_TCP_PORT") != null) {
       dbPort = Integer.parseInt(System.getenv("DB_PORT_5432_TCP_PORT"));
     }
-    if (System.getProperty("lifelog.db.port") != null) {
-      dbPort = Integer.parseInt(System.getProperty("lifelog.db.port"));
+    if (System.getProperty("swarm.lifelog.db.port") != null) {
+      dbPort = Integer.parseInt(System.getProperty("swarm.lifelog.db.port"));
     }
 
     return dbPort;
@@ -79,8 +79,8 @@ class LifeLogConfig {
     if (System.getenv("KEYCLOAK_PORT_8080_TCP_ADDR") != null) {
       keycloakHost = System.getenv("KEYCLOAK_PORT_8080_TCP_ADDR");
     }
-    if (System.getProperty("lifelog.keycloak.host") != null) {
-      keycloakHost = System.getProperty("lifelog.keycloak.host");
+    if (System.getProperty("swarm.lifelog.keycloak.host") != null) {
+      keycloakHost = System.getProperty("swarm.lifelog.keycloak.host");
     }
 
     return keycloakHost;
@@ -92,8 +92,8 @@ class LifeLogConfig {
     if (System.getenv("KEYCLOAK_PORT_8080_TCP_PORT") != null) {
       keycloakPort = Integer.parseInt(System.getenv("KEYCLOAK_PORT_8080_TCP_PORT"));
     }
-    if (System.getProperty("lifelog.db.port") != null) {
-      keycloakPort = Integer.parseInt(System.getProperty("lifelog.db.port"));
+    if (System.getProperty("swarm.lifelog.db.port") != null) {
+      keycloakPort = Integer.parseInt(System.getProperty("swarm.lifelog.db.port"));
     }
 
     return keycloakPort;
