@@ -4,7 +4,7 @@ lifelog:
     ENVIRONMENT_PRODUCTION: "true"
   links:
     - lifelog-db:db
-    - keycloak:keycloak
+    - lifelog-keycloak:keycloak
   ports:
     - 8080:8080
 lifelog-db:
@@ -16,10 +16,7 @@ lifelog-db:
     - /tmp/lifelog/pgdata/data:/var/lib/postgresql/data
   ports:
     - 5432:5432
-keycloak:
-  image: jboss/keycloak:1.6.1.Final
-  volumes:
-    - /path/to/wildfly-swarm-tour/complete/lifelog-docker:/tmp/lifelog:ro
+lifelog-keycloak:
+  image: emag/keycloak:1.0.0
   ports:
     - 8180:8080
-  command: /opt/jboss/keycloak/bin/standalone.sh -b 0.0.0.0 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/tmp/lifelog/lifelog.json
