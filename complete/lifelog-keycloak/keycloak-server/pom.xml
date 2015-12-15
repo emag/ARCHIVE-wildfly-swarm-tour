@@ -25,6 +25,9 @@
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
+        <configuration>
+          <mainClass>org.wildfly.swarm.ContainerOnlySwarm</mainClass>
+        </configuration>
       </plugin>
     </plugins>
   </build>
