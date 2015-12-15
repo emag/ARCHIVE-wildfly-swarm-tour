@@ -33,17 +33,11 @@ public class EntryControllerIT implements ContainerFactory {
 
   @Deployment(testable = false)
   public static JAXRSArchive createDeployment() {
-    System.err.println("now:" + LocalDateTime.now());
-    System.err.println("createDeployment.ENVIRONMENT_PRODUCTION: " + System.getenv("ENVIRONMENT_PRODUCTION"));
-    System.err.println("createDeployment.production: " + System.getProperty("swarm.lifelog.production"));
     return LifeLogDeployment.deployment();
   }
 
   @Override
   public Container newContainer(String... args) throws Exception {
-    System.err.println("now:" + LocalDateTime.now());
-    System.err.println("newContainer.ENVIRONMENT_PRODUCTION: " + System.getenv("ENVIRONMENT_PRODUCTION"));
-    System.err.println("newContainer.production: " + System.getProperty("swarm.lifelog.production"));
     return LifeLogContainer.newContainer();
   }
 
