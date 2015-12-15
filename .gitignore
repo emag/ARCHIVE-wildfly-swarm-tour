@@ -45,3 +45,6 @@ src/main/webapp/WEB-INF/keycloak.json
 
 # WildFly Swarm
 overlays
+
+# h2
+*.db

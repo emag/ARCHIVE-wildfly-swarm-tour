@@ -10,95 +10,12 @@
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>lifelog-kyecloak</artifactId>
-  <packaging>jar</packaging>
+  <artifactId>lifelog-kyecloak-parent</artifactId>
+  <packaging>pom</packaging>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jaxrs-weld</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jpa</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-keycloak</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${version.lombok}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>${version.postgresql}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-arquillian</artifactId>
-      <version>${version.wildfly-swarm}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.arquillian.junit</groupId>
-      <artifactId>arquillian-junit-container</artifactId>
-      <version>${version.org.arquillian}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>resteasy-client</artifactId>
-      <version>${version.resteasy}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>resteasy-jackson2-provider</artifactId>
-      <version>${version.resteasy}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
-
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <version>${version.maven-failsafe-plugin}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-plugin</artifactId>
-        <configuration>
-          <mainClass>wildflyswarmtour.lifelog.App</mainClass>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+  <modules>
+    <module>lifelog</module>
+    <module>keycloak-server</module>
+  </modules>
 
 </project>
