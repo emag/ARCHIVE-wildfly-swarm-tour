@@ -45,10 +45,13 @@ public class EntryControllerIT implements ContainerFactory {
     return LifeLogContainer.newContainer();
   }
 
-  private static String baseUri = "http://localhost:8080/entries";
+  @ArquillianResource
+  private URI deploymentUri;
 
   @Test
   public void invalid_token_should_be_forbidden() throws Exception {
+    UriBuilder baseUri = UriBuilder.fromUri(deploymentUri).path("entries");
+
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(baseUri);
 
@@ -75,6 +78,8 @@ public class EntryControllerIT implements ContainerFactory {
     Token token = target.request(MediaType.APPLICATION_JSON).post(Entity.form(form), Token.class);
 
     // Create a new entry
+    UriBuilder baseUri = UriBuilder.fromUri(deploymentUri).path("entries");
+    
     client = ClientBuilder.newClient();
     target = client.target(baseUri);
 

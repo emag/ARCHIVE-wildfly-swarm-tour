@@ -2,6 +2,7 @@ package wildflyswarmtour.lifelog.api;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.test.api.ArquillianResource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.swarm.ContainerFactory;
@@ -18,6 +19,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -41,9 +43,12 @@ public class EntryControllerIT implements ContainerFactory {
     return LifeLogContainer.newContainer();
   }
 
+  @ArquillianResource
+  private URI deploymentUri;
+
   @Test
   public void test() {
-    String baseUri = "http://localhost:8080/entries";
+    UriBuilder baseUri = UriBuilder.fromUri(deploymentUri).path("entries");
 
     // Create a new entry
     Client client = ClientBuilder.newClient();

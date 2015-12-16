@@ -44,9 +44,12 @@ public class EntryControllerIT implements ContainerFactory {
     return LifeLogContainer.newContainer();
   }
 
+  @ArquillianResource
+  private URI deploymentUri;
+
   @Test
   public void test() {
-    String baseUri = "http://localhost:8080/entries";
+    UriBuilder baseUri = UriBuilder.fromUri(deploymentUri).path("entries");
 
     // Create a new entry
     Client client = ClientBuilder.newClient();
