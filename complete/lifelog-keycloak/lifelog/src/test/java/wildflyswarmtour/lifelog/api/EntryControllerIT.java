@@ -7,9 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.swarm.ContainerFactory;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
-import org.wildfly.swarm.jpa.JPAFraction;
 import wildflyswarmtour.lifelog.LifeLogContainer;
 import wildflyswarmtour.lifelog.LifeLogDeployment;
 import wildflyswarmtour.lifelog.domain.model.Entry;
@@ -79,7 +77,7 @@ public class EntryControllerIT implements ContainerFactory {
 
     // Create a new entry
     UriBuilder baseUri = UriBuilder.fromUri(deploymentUri).path("entries");
-    
+
     client = ClientBuilder.newClient();
     target = client.target(baseUri);
 
