@@ -6,21 +6,55 @@
   <groupId>com.example</groupId>
   <artifactId>wildfly-swarm-tour-parent</artifactId>
   <version>1.0.0</version>
-  <modules>
-    <module>hello-wildfly-swarm</module>
-  </modules>
 
   <packaging>pom</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 
     <version.wildfly-swarm>1.0.0.Alpha6-SNAPSHOT</version.wildfly-swarm>
+
+    <version.lombok>1.16.6</version.lombok>
+    <version.postgresql>9.4-1205-jdbc42</version.postgresql>
+
+    <version.org.arquillian>1.1.8.Final</version.org.arquillian>
+    <version.resteasy>3.0.13.Final</version.resteasy>
+
     <version.maven-war-plugin>2.6</version.maven-war-plugin>
+    <version.maven-failsafe-plugin>2.19</version.maven-failsafe-plugin>
+    <version.docker-maven-plugin>0.13.6</version.docker-maven-plugin>
   </properties>
+
+  <repositories>
+    <repository>
+      <id>projectodd-snapshots</id>
+      <name>Project:odd Snapshots from CI</name>
+      <url>https://repository-projectodd.forge.cloudbees.com/snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>projectodd-snapshots</id>
+      <name>Project:odd Snapshots from CI</name>
+      <url>https://repository-projectodd.forge.cloudbees.com/snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
 
   <build>
     <finalName>${project.artifactId}</finalName>
@@ -42,5 +76,14 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <modules>
+    <module>hello-wildfly-swarm</module>
+    <module>lifelog</module>
+    <module>lifelog-arquillian</module>
+    <module>lifelog-postgresql</module>
+    <module>lifelog-keycloak</module>
+    <module>lifelog-docker</module>
+  </modules>
 
 </project>
