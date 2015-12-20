@@ -30,7 +30,7 @@
           <images>
             <image>
               <name>emag/keycloak</name>
-              <alias>keycloak</alias>
+              <alias>lifelog-keycloak</alias>
               <build>
                 <from>jboss/base-jdk:8</from>
                 <maintainer>emag</maintainer>

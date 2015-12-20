@@ -149,7 +149,7 @@
                 </env>
                 <links>
                   <link>lifelog-db:db</link>
-                  <link>keycloak:keycloak</link>
+                  <link>lifelog-keycloak:keycloak</link>
                 </links>
                 <ports>
                   <port>8080:8080</port>
