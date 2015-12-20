@@ -1,23 +1,23 @@
 package wildflyswarmtour.lifelog.api;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import wildflyswarmtour.lifelog.domain.model.Entry;
+
+import java.io.Serializable;
 
 /**
  * @author Yoshimasa Tanabe
  */
 @Data
-public class EntryResponse {
+@AllArgsConstructor
+@NoArgsConstructor
+public class EntryResponse implements Serializable {
 
-  private final Integer id;
-  private final String timestamp;
-  private final String description;
-
-  private EntryResponse(Integer id, String timestamp, String description) {
-    this.id = id;
-    this.timestamp = timestamp;
-    this.description = description;
-  }
+  private Integer id;
+  private String timestamp;
+  private String description;
 
   public static EntryResponse from(Entry entry) {
     return new EntryResponse(entry.getId(), entry.getTimestamp().toString(), entry.getDescription());
