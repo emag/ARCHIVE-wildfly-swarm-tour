@@ -6,7 +6,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -31,7 +30,6 @@ public class EntryRepository {
 
   public Entry save(Entry entry) {
     if (entry.getId() == null) { // new entry
-      entry.setTimestamp(LocalDateTime.now());
       em.persist(entry);
       return entry;
     } else { // existing entry

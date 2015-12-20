@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -32,5 +33,10 @@ public class Entry implements Serializable {
 
   @Column(nullable = false)
   private String description;
+
+  @PrePersist
+  private void setTimestamp() {
+    setTimestamp(LocalDateTime.now());
+  }
 
 }
