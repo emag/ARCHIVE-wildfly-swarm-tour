@@ -15,7 +15,7 @@
   <dependencies>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-keycloak-server</artifactId>
+      <artifactId>keycloak-server</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
   </dependencies>

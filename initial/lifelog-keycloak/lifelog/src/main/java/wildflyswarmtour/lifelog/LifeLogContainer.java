@@ -17,7 +17,7 @@ public class LifeLogContainer {
     if (production) {
       container.fraction(new DatasourcesFraction()
         .jdbcDriver("org.postgresql", (d) -> {
-          d.driverDatasourceClassName("org.postgresql.Driver");
+          d.driverClassName("org.postgresql.Driver");
           d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
           d.driverModuleName("org.postgresql");
         })
@@ -31,7 +31,7 @@ public class LifeLogContainer {
     } else {
       container.fraction(new DatasourcesFraction()
         .jdbcDriver("h2", (d) -> {
-          d.driverDatasourceClassName("org.h2.Driver");
+          d.driverClassName("org.h2.Driver");
           d.xaDatasourceClass("org.h2.jdbcx.JdbcDataSource");
           d.driverModuleName("com.h2database.h2");
         })
