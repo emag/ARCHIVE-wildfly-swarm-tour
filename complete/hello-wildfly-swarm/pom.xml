@@ -17,7 +17,6 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
         <artifactId>jaxrs</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
   </dependencies>
 

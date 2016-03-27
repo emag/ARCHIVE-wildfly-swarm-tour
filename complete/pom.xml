@@ -16,7 +16,8 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 
-    <version.wildfly-swarm>1.0.0.Alpha8</version.wildfly-swarm>
+    <version.wildfly-swarm>1.0.0.CR1-SNAPSHOT</version.wildfly-swarm>
+    <version.arquillian-bom>1.1.10.Final</version.arquillian-bom>
 
     <version.lombok>1.16.6</version.lombok>
     <version.postgresql>9.4-1205-jdbc42</version.postgresql>
@@ -55,6 +56,25 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>bom</artifactId>
+        <version>${version.wildfly-swarm}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian</groupId>
+        <artifactId>arquillian-bom</artifactId>
+        <version>${version.arquillian-bom}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <finalName>${project.artifactId}</finalName>

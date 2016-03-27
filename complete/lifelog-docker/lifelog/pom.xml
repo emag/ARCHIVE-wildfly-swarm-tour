@@ -16,22 +16,18 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs-weld</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs-jsonp</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jpa</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>keycloak</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
 
     <dependency>
@@ -50,13 +46,11 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>arquillian</artifactId>
-      <version>${version.wildfly-swarm}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.arquillian.junit</groupId>
       <artifactId>arquillian-junit-container</artifactId>
-      <version>${version.org.arquillian}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
